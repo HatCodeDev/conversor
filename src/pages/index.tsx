@@ -2,6 +2,7 @@
 import { title, subtitle } from "@/components/primitives";
 import DefaultLayout from "@/layouts/default";
 import { Snippet } from "@heroui/snippet";
+import { Code } from "@heroui/code";
 export default function IndexPage() {
   return (
     <DefaultLayout>
@@ -14,12 +15,11 @@ export default function IndexPage() {
             Realiza conversiones entre binario, decimal, octal y hexadecimal
           </div>
           <div className="mt-8">
-          <Snippet hideCopyButton hideSymbol variant="bordered">
-            <span>
-             Integrantes del team{" "}
-            </span>
-            
-          </Snippet>
+            <p>Integrantes del team:</p>
+            <p className="mt-2"><Code>Misael Reynoso Aguayo</Code></p>
+            <p className="mt-2"><Code>Camila Serrano Trinidad</Code></p>
+            <p className="mt-2"><Code>Christian Luna Ortiz</Code></p>
+          
         </div>
         </div>
       </section>
