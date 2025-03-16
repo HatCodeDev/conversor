@@ -3,33 +3,44 @@ import DefaultLayout from "@/layouts/default";
 import { decimalToOctal } from "@/converters/decimalToOctal";
 import { octalToDecimal } from "@/converters/octalToDecimal";
 import ConverterToggle from "@/components/ConverterToggle";
-import { Card, Input, Button, Divider } from "@heroui/react";
+import { Card, Input, Button, Divider, Alert } from "@heroui/react";
 
 export default function DecimalToOctal() {
   const [isReversed, setIsReversed] = useState(false);
   const [input, setInput] = useState("");
   const [result, setResult] = useState("");
+  const [error, setError] = useState("");
 
   useEffect(() => {
-    setInput("");   // Limpia el input
-    setResult("");  // Limpia el resultado
-  }, [isReversed]); // Se ejecuta cuando cambia isReversed
+    setInput("");
+    setResult("");
+    setError("");
+  }, [isReversed]);
 
   const handleConvert = () => {
-    setResult(isReversed ? octalToDecimal(input) : decimalToOctal(input));
+    setError("");
+    const conversion = isReversed ? octalToDecimal(input) : decimalToOctal(input);
+
+    if (conversion.error) {
+      setError(conversion.message || "Entrada inválida");
+      setResult("");
+    } else {
+      setResult(conversion.result || "");
+    }
   };
 
   return (
     <DefaultLayout>
       <div className="flex justify-center items-center p-4">
-        <Card className="w-full max-w-lg bg-white dark:bg-gray-900 shadow-xl p-6 min-h-[400px] flex flex-col justify-between">
+        <Card className="w-full max-w-lg bg-gray-100 dark:bg-gray-900 shadow-xl p-6 min-h-[400px] flex flex-col justify-between">
           <h1 className="text-2xl font-bold text-center text-gray-900 dark:text-white">
             {isReversed ? "Octal a Decimal" : "Decimal a Octal"}
           </h1>
-          
           <Divider className="my-4" />
-
           <div className="flex flex-col gap-4 flex-grow">
+            {error && (
+              <Alert color="danger" title={error} />
+            )}
             <Input
               value={input}
               onChange={(e) => setInput(e.target.value)}
