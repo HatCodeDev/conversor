@@ -33,7 +33,7 @@ export default function DecimalToBinary() {
   return (
     <DefaultLayout>
       <div className="flex justify-center items-center p-4">
-        <Card className="w-full max-w-lg bg-white dark:bg-gray-900 shadow-xl p-6 min-h-[400px] flex flex-col justify-between">
+        <Card className="w-full max-w-lg bg-gray-100 dark:bg-gray-900 shadow-xl p-6 min-h-[400px] flex flex-col justify-between">
           <h1 className="text-2xl font-bold text-center text-gray-900 dark:text-white">
             {isReversed ? "Binario a Decimal" : "Decimal a Binario"}
           </h1>
