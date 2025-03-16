@@ -17,11 +17,11 @@ export default function DefaultLayout({
         <Link
           isExternal
           className="flex items-center gap-1 text-current"
-          href="https://heroui.com"
-          title="heroui.com homepage"
+          href="https://github.com/HatCodeDev/conversor"
+          title="proyecto primer parcial"
         >
           <span className="text-default-600">Powered by</span>
-          <p className="text-primary">Nuetsro team sjsj</p>
+          <p className="text-primary">Trio de tres</p>
         </Link>
       </footer>
     </div>
